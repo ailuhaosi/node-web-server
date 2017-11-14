@@ -69,70 +69,57 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_express_http_proxy__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_express_http_proxy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_express_http_proxy__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__renderer__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_http__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_http___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_http__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fs__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_fs__);
 
 
 
-
-const site1 = __WEBPACK_IMPORTED_MODULE_0_express___default()();
-site1.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static('public'));
-
-site1.get('/', (req, res) => {
-    res.redirect('0/index.html');
+__WEBPACK_IMPORTED_MODULE_1_fs___default.a.readFile('./sites/0/index.html', function (err, html) {
+    if (err) {
+        throw err;
+    }
+    __WEBPACK_IMPORTED_MODULE_0_http___default.a.createServer(function(request, response) {
+        response.writeHeader(200, {"Content-Type": "text/html"});
+        response.write(html);
+        response.end();
+    }).listen(8000);
 });
 
-site1.listen(3000, () => {
-    console.log('Listening on port 3000');
+__WEBPACK_IMPORTED_MODULE_1_fs___default.a.readFile('./sites/1/index.html', function (err, html) {
+    if (err) {
+        throw err;
+    }
+    __WEBPACK_IMPORTED_MODULE_0_http___default.a.createServer(function(request, response) {
+        response.writeHeader(200, {"Content-Type": "text/html"});
+        response.write(html);
+        response.end();
+    }).listen(8001);
 });
 
-const site2 = __WEBPACK_IMPORTED_MODULE_0_express___default()();
-site2.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static('public'));
-
-site2.get('/', (req, res) => {
-    res.redirect('1/index.html');
-});
-
-site2.listen(3001, () => {
-    console.log('Listening on port 3001');
-});
-
-const site3 = __WEBPACK_IMPORTED_MODULE_0_express___default()();
-site3.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static('public'));
-
-site3.get('/', (req, res) => {
-    res.redirect('2/index.html');
-});
-
-site3.listen(3002, () => {
-    console.log('Listening on port 3002');
+__WEBPACK_IMPORTED_MODULE_1_fs___default.a.readFile('./sites/2/index.html', function (err, html) {
+    if (err) {
+        throw err;
+    }
+    __WEBPACK_IMPORTED_MODULE_0_http___default.a.createServer(function(request, response) {
+        response.writeHeader(200, {"Content-Type": "text/html"});
+        response.write(html);
+        response.end();
+    }).listen(8002);
 });
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("express");
+module.exports = require("http");
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("express-http-proxy");
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony default export */ var _unused_webpack_default_export = ((req) => {
-    if(req.path) {
-        console.log(req.path);
-    }
-});
+module.exports = require("fs");
 
 /***/ })
 /******/ ]);
